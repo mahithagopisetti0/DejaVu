@@ -14,22 +14,21 @@ export default function Sidebar() {
       <div className="p-6">
         <h1 className="text-2xl font-bold text-white flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-indigo-500 flex items-center justify-center">
-            <span className="text-white font-bold">N</span>
+            <span className="text-white font-bold">DV</span>
           </div>
-          Nivara
+          DejaVu
         </h1>
       </div>
-      
+
       <nav className="flex-1 px-4 mt-6 space-y-2">
         {navItems.map((item) => (
           <NavLink
             key={item.path}
             to={item.path}
             className={({ isActive }) =>
-              `flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${
-                isActive 
-                  ? 'bg-indigo-600/10 text-indigo-400 font-medium' 
-                  : 'hover:bg-slate-800 hover:text-white'
+              `flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${isActive
+                ? 'bg-indigo-600/10 text-indigo-400 font-medium'
+                : 'hover:bg-slate-800 hover:text-white'
               }`
             }
           >

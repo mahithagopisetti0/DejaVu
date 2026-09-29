@@ -4,7 +4,7 @@ import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/Card'
 import { Button } from '../components/ui/Button';
 import { Modal } from '../components/ui/Modal';
 import { LoadingState, ErrorState, EmptyState } from '../components/ui/States';
-import { AuditTable } from '../components/audits/AuditTable';
+import { AuditTable } from "../components/audits/AuditTable";
 import { AuditForm } from '../components/audits/AuditForm';
 import { Plus, Search } from 'lucide-react';
 
@@ -14,8 +14,8 @@ export default function Audits() {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [selectedAudit, setSelectedAudit] = useState(null);
 
-  const filteredAudits = audits.filter(audit => 
-    audit.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+  const filteredAudits = audits.filter(audit =>
+    audit.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     audit.id.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -42,8 +42,8 @@ export default function Audits() {
           <CardTitle>All Audits</CardTitle>
           <div className="relative">
             <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-            <input 
-              type="text" 
+            <input
+              type="text"
               placeholder="Search audits..."
               className="pl-9 pr-4 py-2 border border-slate-300 rounded-lg text-sm w-64 focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
               value={searchTerm}
@@ -51,7 +51,7 @@ export default function Audits() {
             />
           </div>
         </CardHeader>
-        
+
         <div className="flex-1 overflow-hidden">
           {loading ? (
             <LoadingState text="Loading audits..." />
@@ -60,28 +60,28 @@ export default function Audits() {
           ) : filteredAudits.length === 0 ? (
             <EmptyState title="No audits found" description="Try adjusting your search criteria or create a new audit." />
           ) : (
-            <AuditTable 
-              audits={filteredAudits} 
+            <AuditTable
+              audits={filteredAudits}
               onViewDetails={(audit) => setSelectedAudit(audit)}
             />
           )}
         </div>
       </Card>
 
-      <Modal 
-        isOpen={isFormOpen} 
-        onClose={() => setIsFormOpen(false)} 
+      <Modal
+        isOpen={isFormOpen}
+        onClose={() => setIsFormOpen(false)}
         title="Create New Audit"
       >
-        <AuditForm 
-          onSubmit={handleCreateSubmit} 
-          onCancel={() => setIsFormOpen(false)} 
+        <AuditForm
+          onSubmit={handleCreateSubmit}
+          onCancel={() => setIsFormOpen(false)}
         />
       </Modal>
 
-      <Modal 
-        isOpen={!!selectedAudit} 
-        onClose={() => setSelectedAudit(null)} 
+      <Modal
+        isOpen={!!selectedAudit}
+        onClose={() => setSelectedAudit(null)}
         title={`Audit Details: ${selectedAudit?.id}`}
       >
         {selectedAudit && (
